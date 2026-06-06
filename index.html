@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>लहार की पुकार | वोटिंग + हस्ताक्षर अभियान - Growing People Foundation</title>
+    <meta name="description" content="लहार में 65 गाँव, 35000+ लोग, लेकिन एक भी PG कॉलेज नहीं। हर दिन सैकड़ों सपने टूटते हैं। क्या आप इन सपनों को जोड़ने में मदद करेंगे?">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans Devanagari', 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #fef9f0 0%, #f0ebe0 100%);
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #e0d5c0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #0a3d2e; border-radius: 10px; }
+        
+        .navbar {
+            background: linear-gradient(135deg, #0a3d2e, #0d4d3a);
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo h1 { color: #f5c542; font-size: 1.3rem; }
+        .logo p { color: #b8d9c6; font-size: 0.7rem; }
+        .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+        .nav-links a:hover { background: #f5c542; color: #0a3d2e; transform: translateY(-2px); }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a4d3a, #0d3527);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before { content: "💔"; position: absolute; top: 20px; left: 20px; font-size: 3rem; opacity: 0.15; }
+        .hero::after { content: "🙏"; position: absolute; bottom: 20px; right: 20px; font-size: 3rem; opacity: 0.15; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 800; }
+        .hero h1 span { color: #f5c542; display: inline-block; animation: gentleBounce 2s infinite; }
+        @keyframes gentleBounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);} }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem auto; line-height: 1.8; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: #f5c542; color: #0a3d2e; padding: 0.9rem 2rem; border-radius: 50px; font-weight: bold; display: inline-block; transition: 0.3s; }
+        .btn-primary:hover { background: #ffd966; transform: scale(1.05); }
+        .btn-secondary { background: transparent; border: 2px solid #f5c542; color: #f5c542; padding: 0.9rem 2rem; border-radius: 50px; font-weight: bold; display: inline-block; transition: 0.3s; }
+        .btn-secondary:hover { background: #f5c542; color: #0a3d2e; transform: scale(1.05); }
+        
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            max-width: 1300px;
+            margin: -2rem auto 2.5rem auto;
+            padding: 0 1.5rem;
+            z-index: 10;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.8rem 1rem;
+            border-radius: 25px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border-bottom: 4px solid #f5c542;
+        }
+        .stat-card:hover { transform: translateY(-8px); }
+        .stat-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: #0a3d2e; font-family: monospace; }
+        .stat-label { color: #555; margin-top: 0.5rem; font-size: 0.85rem; font-weight: 500; }
+        .stat-card.highlight { background: linear-gradient(135deg, #fff8e7, #fff0d4); }
+        .stat-card.highlight .stat-number { font-size: 2.8rem; }
+        
+        .emotional-box {
+            background: linear-gradient(135deg, #fff5e6, #ffe8d6);
+            padding: 2rem;
+            border-radius: 30px;
+            text-align: center;
+            margin: 2rem 0;
+            border-left: 5px solid #f5c542;
+            border-right: 5px solid #f5c542;
+        }
+        .emotional-box h3 { font-size: 1.6rem; color: #0a3d2e; margin-bottom: 1rem; }
+        .emotional-box p { font-size: 1.05rem; color: #444; max-width: 800px; margin: 0 auto; }
+        
+        .section { max-width: 1300px; margin: 0 auto 3rem auto; padding: 0 1.5rem; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #0a3d2e; font-weight: 700; }
+        .section-title::after { content: ''; display: block; width: 80px; height: 3px; background: #f5c542; margin: 0.8rem auto; border-radius: 3px; }
+        
+        .cards { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+        .card {
+            background: white; padding: 2rem; border-radius: 20px; flex: 1; min-width: 260px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: 0.3s; border-left: 5px solid #f5c542;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { margin-bottom: 1rem; color: #0a3d2e; font-size: 1.3rem; }
+        .card p { color: #555; line-height: 1.7; }
+        
+        .direct-form {
+            background: white;
+            border-radius: 25px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .direct-form input, .direct-form select {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .direct-form input:focus, .direct-form select:focus {
+            outline: none;
+            border-color: #f5c542;
+            box-shadow: 0 0 0 2px rgba(245,197,66,0.2);
+        }
+        .direct-form button {
+            background: #f5c542;
+            color: #0a3d2e;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .direct-form button:hover { background: #ffd966; transform: scale(1.02); }
+        
+        .voting-section, .petition-section {
+            background: linear-gradient(135deg, #eef5f0, #e0ecd4);
+            border-radius: 35px;
+            padding: 2rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .petition-section { background: linear-gradient(135deg, #fff8e7, #fff0d4); }
+        
+        .signature-counter { text-align: center; margin: 1rem 0 1.5rem; }
+        .signature-number { font-size: 3.5rem; font-weight: 800; color: #0a3d2e; background: #f5c542; display: inline-block; padding: 0.4rem 2rem; border-radius: 80px; }
+        
+        .supporters-section {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .supporters-title { font-size: 1.3rem; color: #0a3d2e; margin-bottom: 1.2rem; text-align: center; font-weight: 600; }
+        .supporters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 0.5rem;
+        }
+        .supporter-card {
+            background: linear-gradient(135deg, #e8f0e8, #d4e4d4);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #0a3d2e;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .supporter-card::before { content: "❤️"; font-size: 0.8rem; }
+        
+        .update-list { list-style: none; }
+        .update-item {
+            background: white; padding: 1rem 1.2rem; margin-bottom: 1rem; border-radius: 18px;
+            display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid #f5c542;
+        }
+        .update-date { background: #0a3d2e; color: #f5c542; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; min-width: 95px; text-align: center; font-weight: 600; }
+        
+        .social-section {
+            background: linear-gradient(135deg, #0a3d2e, #0d4d3a);
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+            border-radius: 30px 30px 0 0;
+        }
+        .social-container { max-width: 1200px; margin: 0 auto; }
+        .social-row { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; }
+        .social-card { flex: 1; min-width: 280px; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border-radius: 30px; padding: 1.5rem; text-align: center; }
+        .social-card h3 { color: #f5c542; margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .social-card p { color: #b8d9c6; font-size: 0.85rem; margin-bottom: 1rem; }
+        .social-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .share-whatsapp { background: #25D366; color: white; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
+        .share-facebook { background: #1877F2; color: white; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
+        .follow-whatsapp { background: #075E54; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
+        .follow-facebook { background: #0d5ab9; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
+        .follow-instagram { background: linear-gradient(45deg, #f09433, #d62976, #962fbf); color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; }
+        .share-whatsapp:hover, .share-facebook:hover, .follow-whatsapp:hover, .follow-facebook:hover, .follow-instagram:hover { transform: translateY(-2px); opacity: 0.92; }
+        
+        .divider { text-align: center; color: #f5c542; font-size: 0.9rem; margin: 1rem 0; }
+        .footer { background: #062316; color: #8aa89a; text-align: center; padding: 1.8rem; font-size: 0.8rem; }
+        
+        .floating-btn {
+            position: fixed; bottom: 25px; right: 25px; background: #f5c542; color: #0a3d2e;
+            padding: 0.8rem 1.3rem; border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2); z-index: 99; animation: gentlePulse 2s infinite;
+        }
+        @keyframes gentlePulse { 0%{transform:scale(1);} 50%{transform:scale(1.03);} 100%{transform:scale(1);} }
+        
+        .admin-toggle {
+            position: fixed; bottom: 25px; left: 25px; background: #0a3d2e; color: white;
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000; cursor: pointer; border: none;
+        }
+        .admin-toggle:hover { transform: scale(1.1); background: #f5c542; color: #0a3d2e; }
+        
+        .admin-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
+        }
+        .admin-modal.active { display: flex; }
+        .admin-panel {
+            background: white; width: 90%; max-width: 500px; border-radius: 25px;
+            padding: 2rem; max-height: 85%; overflow-y: auto;
+        }
+        .admin-panel h2 { color: #0a3d2e; margin-bottom: 1rem; text-align: center; }
+        .admin-panel h3 { color: #0a3d2e; margin: 15px 0 5px; font-size: 1rem; }
+        .admin-panel input, .admin-panel textarea {
+            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 12px; font-family: inherit;
+        }
+        .admin-panel button {
+            background: #0a3d2e; color: white; padding: 12px; border: none;
+            border-radius: 25px; width: 100%; margin-top: 10px; font-weight: bold; cursor: pointer;
+        }
+        .admin-panel button:hover { background: #f5c542; color: #0a3d2e; }
+        .close-btn { background: #ccc; color: #333; margin-top: 5px; }
+        .success-msg { background: #d4edda; color: #155724; padding: 10px; border-radius: 10px; margin: 10px 0; text-align: center; }
+        .error-msg { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 10px; margin: 10px 0; text-align: center; }
+        
+        .thoughts-container {
+            background: #e8f0e8; border-radius: 20px; padding: 1rem; margin-top: 1rem;
+            text-align: center; border-left: 4px solid #f5c542; border-right: 4px solid #f5c542;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 0.95rem; }
+            .section-title { font-size: 1.5rem; }
+            .stat-number { font-size: 1.6rem; }
+            .stat-card.highlight .stat-number { font-size: 2rem; }
+            .signature-number { font-size: 2rem; padding: 0.3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#vote" class="floating-btn">✨ अपनी आवाज़ दें ✨</a>
+<button class="admin-toggle" id="adminToggleBtn" title="Admin Panel">🔐</button>
+
+<!-- Admin Modal -->
+<div class="admin-modal" id="adminModal">
+    <div class="admin-panel">
+        <div id="loginSection">
+            <h2>🔐 एडमिन लॉगिन</h2>
+            <input type="password" id="adminPassword" placeholder="पासवर्ड डालें">
+            <button onclick="checkAdminLogin()">लॉगिन करें</button>
+            <button class="close-btn" onclick="closeAdminModal()">बंद करें</button>
+            <div id="loginMsg"></div>
+        </div>
+        <div id="dashboardSection" style="display:none;">
+            <h2>📋 एडमिन डैशबोर्ड</h2>
+            <h3>➕ नया अपडेट डालें</h3>
+            <input type="text" id="newUpdateDate" placeholder="तारीख (जैसे: 07 जून 2026)">
+            <textarea id="newUpdateText" rows="2" placeholder="अपडेट टेक्स्ट..."></textarea>
+            <button onclick="addNewUpdate()">अपडेट जोड़ें</button>
+            
+            <h3>✍️ नया समर्थक जोड़ें</h3>
+            <input type="text" id="newSupporterName" placeholder="नाम, गाँव, कक्षा, मोबाइल (जैसे: राहुल,लहार,B.Sc.,9876543210)">
+            <button onclick="addNewSupporter()">समर्थक जोड़ें</button>
+            
+            <h3>📊 काउंटर अपडेट करें</h3>
+            <input type="number" id="newVoteCount" placeholder="वोट काउंटर">
+            <input type="number" id="newSignatureCount" placeholder="हस्ताक्षर काउंटर">
+            <button onclick="updateCounters()">काउंटर अपडेट करें</button>
+            
+            <h3>💬 नई सोच / संदेश डालें</h3>
+            <textarea id="newThought" rows="3" placeholder="यहाँ कोई भी नई सोच, संदेश, या घोषणा लिखें..."></textarea>
+            <button onclick="addNewThought()">संदेश पोस्ट करें</button>
+            
+            <div id="adminMsg"></div>
+            <button class="close-btn" onclick="closeAdminModal()" style="margin-top: 20px;">बंद करें</button>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo"><h1>🌾 लहार की पुकार</h1><p>Growing People Foundation</p></div>
+        <div class="nav-links">
+            <a href="#">🏠 होम</a>
+            <a href="#vote">🗳️ वोट करें</a>
+            <a href="#petition">✍️ हस्ताक्षर करें</a>
+            <a href="#supporters">💚 समर्थक</a>
+            <a href="#updates">📢 अपडेट</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>🌙 जब <span>सपने</span> दूरी से टूट जाते हैं...</h1>
+    <p>लहार की 65 ग्राम पंचायतों में हर सुबह सैकड़ों युवा उठते हैं,<br>
+    पढ़ने का सपना संजोते हैं, लेकिन... पीजी कॉलेज का नाम तक नहीं है।</p>
+    <div class="hero-buttons">
+        <a href="#vote" class="btn-primary">💔 अब बस हो गया — आवाज़ उठाएँ</a>
+        <a href="#petition" class="btn-secondary">🤝 अपना हाथ बढ़ाएँ</a>
+    </div>
+</section>
+
+<div class="stats">
+    <div class="stat-card"><div class="stat-icon">🏙️</div><div class="stat-number">35,000+</div><div class="stat-label">लहार नगर की जनसंख्या</div></div>
+    <div class="stat-card"><div class="stat-icon">🏘️</div><div class="stat-number">65</div><div class="stat-label">ग्राम पंचायतें</div></div>
+    <div class="stat-card highlight"><div class="stat-icon">🗳️</div><div class="stat-number" id="voteCountDisplay">0</div><div class="stat-label">वोट (लाइव)</div></div>
+    <div class="stat-card highlight"><div class="stat-icon">✍️</div><div class="stat-number" id="signatureCountDisplay">0</div><div class="stat-label">हस्ताक्षर (लाइव)</div></div>
+</div>
+
+<section class="section">
+    <div class="emotional-box">
+        <h3>😔 एक सच जो दिल को छू लेता है</h3>
+        <p>मिहोना 14 किमी, अलमपुर 38 किमी... एक गरीब परिवार की बेटी रोज 76 किमी का सफर नहीं कर सकती।<br>
+        एक किसान का बेटा दो बसों के किराए का खर्चा नहीं उठा सकता।<br>
+        <strong>🤲 क्या यह उनकी गलती है? या हम सबकी जिम्मेदारी?</strong></p>
+    </div>
+    <div id="thoughtsContainer" class="thoughts-container"></div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">🤔 पीजी कॉलेज क्यों — सिर्फ एक इमारत नहीं, एक उम्मीद है</h2>
+    <div class="cards">
+        <div class="card"><h3>🚸 जब दूरी बन जाती है दीवार</h3><p>14 किमी दूर मिहोना, 38 किमी दूर अलमपुर — यह दूरी एक गरीब परिवार के लिए अरबों किमी जितनी है।</p></div>
+        <div class="card"><h3>👧 बेटियों के सपने दब जाते हैं</h3><p>गाँव की बेटियाँ पीजी पढ़ना चाहती हैं, लेकिन दूर कॉलेज भेजने में परिवारों को सुरक्षा की चिंता सताती है।</p></div>
+        <div class="card"><h3>🏃 पलायन — गाँव खाली हो रहे हैं</h3><p>हर साल सैकड़ों युवा पढ़ाई के लिए लहार छोड़ते हैं। जो नहीं जा पाते, उनके सपने अधूरे रह जाते हैं।</p></div>
+        <div class="card"><h3>🌟 एक कॉलेज, सैकड़ों संभावनाएँ</h3><p>कॉलेज खुलने से नौकरियाँ आएँगी, व्यापार बढ़ेगा, और लहार विकास की राह पर आगे बढ़ेगा।</p></div>
+    </div>
+</section>
+
+<!-- ========== वोटिंग सेक्शन ========== -->
+<section id="vote" class="section voting-section">
+    <h2 class="section-title">🗳️ क्या आप बदलाव देखना चाहते हैं?</h2>
+    <p style="text-align: center; margin-bottom: 1rem;">आपकी एक सहमति, लहार के हजारों सपनों को पंख दे सकती है।</p>
+    <div class="direct-form">
+        <input type="text" id="voteName" placeholder="आपका पूरा नाम *">
+        <input type="text" id="voteVillage" placeholder="गाँव / शहर का नाम *">
+        <input type="text" id="voteEducation" placeholder="शिक्षा (कक्षा / कोर्स) *">
+        <input type="tel" id="voteMobile" placeholder="मोबाइल नंबर (वैकल्पिक)">
+        <button onclick="submitVote()">🗳️ वोट करें</button>
+        <p style="text-align: center; font-size: 0.7rem; color: #666; margin-top: 10px;">🙏 आपका वोट हमारी ताकत बढ़ाएगा</p>
+    </div>
+</section>
+
+<!-- ========== हस्ताक्षर सेक्शन ========== -->
+<section id="petition" class="section petition-section">
+    <h2 class="section-title">✍️ हस्ताक्षर अभियान — आपका नाम, उनकी उम्मीद</h2>
+    <p style="text-align: center; margin-bottom: 0.5rem;">अब तक इतने लोग इस अभियान से जुड़ चुके हैं:</p>
+    <div class="signature-counter"><span class="signature-number" id="liveSignatureCount">0</span></div>
+    <p style="text-align: center; margin: 0.5rem 0 1rem 0;">💚 हर हस्ताक्षर के साथ एक नई सुबह की उम्मीद बंधती है</p>
+    <div class="direct-form">
+        <input type="text" id="signName" placeholder="आपका पूरा नाम *">
+        <input type="text" id="signVillage" placeholder="गाँव / शहर का नाम *">
+        <input type="text" id="signEducation" placeholder="शिक्षा (कक्षा / कोर्स) *">
+        <input type="tel" id="signMobile" placeholder="मोबाइल नंबर (वैकल्पिक)">
+        <button onclick="submitSignature()">✍️ हस्ताक्षर करें</button>
+        <p style="text-align: center; font-size: 0.7rem; color: #666; margin-top: 10px;">🙏 आपका नाम समर्थकों की सूची में जुड़ जाएगा</p>
+    </div>
+</section>
+
+<!-- ========== समर्थकों की सूची ========== -->
+<section id="supporters" class="section">
+    <h2 class="section-title">💚 ये लोग पहले ही साथ दे चुके हैं</h2>
+    <div class="supporters-section">
+        <div class="supporters-title">🙏 हर नाम एक वादा है — "हम चुप नहीं बैठेंगे"</div>
+        <div class="supporters-grid" id="supportersList"></div>
+    </div>
+</section>
+
+<!-- ========== अपडेट सूची ========== -->
+<section id="updates" class="section">
+    <h2 class="section-title">📢 अभियान की ताज़ा खबरें</h2>
+    <ul class="update-list" id="updateList"></ul>
+</section>
+
+<section class="section">
+    <h2 class="section-title">🤝 आप कैसे मदद कर सकते हैं?</h2>
+    <div class="cards">
+        <div class="card"><h3>1️⃣ अपनी आवाज़ दें</h3><p>ऊपर वोटिंग फॉर्म भरकर दिखाइए कि आप इस बदलाव के साथ हैं।</p></div>
+        <div class="card"><h3>2️⃣ हस्ताक्षर करें</h3><p>हस्ताक्षर अभियान में जुड़ें। जितने अधिक हस्ताक्षर, उतनी तेज आवाज़।</p></div>
+        <div class="card"><h3>3️⃣ इस संदेश को आगे बढ़ाएँ</h3><p>नीचे WhatsApp और Facebook बटन हैं — एक शेयर, सैकड़ों तक पहुँच।</p></div>
+        <div class="card"><h3>4️⃣ स्वयंसेवक बनें</h3><p>हमारे साथ जुड़ें, गाँव-गाँव जाकर लोगों को जागरूक करें।</p></div>
+    </div>
+</section>
+
+<div class="social-section">
+    <div class="social-container">
+        <div class="social-row">
+            <div class="social-card">
+                <h3>📢 इस अभियान को शेयर करें</h3>
+                <p>जितना ज्यादा शेयर, उतनी तेज आवाज़</p>
+                <div class="social-buttons">
+                    <a href="#" target="_blank" class="share-whatsapp" id="whatsappShareBtn">📱 WhatsApp शेयर</a>
+                    <a href="#" target="_blank" class="share-facebook" id="facebookShareBtn">📘 Facebook शेयर</a>
+                </div>
+            </div>
+            <div class="social-card">
+                <h3>🔔 हमें फॉलो करें</h3>
+                <p>अभियान की हर अपडेट सबसे पहले पाने के लिए</p>
+                <div class="social-buttons">
+                    <a href="#" target="_blank" class="follow-whatsapp" id="whatsappFollowBtn">📱 WhatsApp फॉलो</a>
+                    <a href="#" target="_blank" class="follow-facebook" id="facebookFollowBtn">📘 Facebook लाइक</a>
+                    <a href="#" target="_blank" class="follow-instagram" id="instagramFollowBtn">📸 Instagram फॉलो</a>
+                </div>
+            </div>
+        </div>
+        <div class="divider">✦ ✦ ✦</div>
+        <div style="text-align: center; color: #b8d9c6; font-size: 0.8rem;">💚 हर शेयर और हर फॉलो हमारी ताकत बढ़ाता है</div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>🌱 Growing People Foundation — हम बदलाव पर विश्वास करते हैं, और आप उस बदलाव की शुरुआत हैं।</p>
+    <p style="margin-top: 0.5rem;">📧 Email: growingpeoplefoundation@gmail.com | 📞 संपर्क: [आपका नंबर]</p>
+    <p style="margin-top: 0.5rem; font-size: 0.7rem;">यह एक जन अभियान है। हम किसी के खिलाफ नहीं, हम सबके साथ हैं।</p>
+</footer>
+
+<script>
+    // ========== डिफॉल्ट डाटा ==========
+    let appData = {
+        voteCount: 845,
+        signatureCount: 1247,
+        // अब supporters ऑब्जेक्ट के रूप में स्टोर होंगे
+        supporters: [
+            { display: "राहुल शर्मा, लहार, B.Sc. प्रथम वर्ष, 9876543210", name: "राहुल शर्मा", village: "लहार", education: "B.Sc. प्रथम वर्ष", mobile: "9876543210", type: "signature", date: new Date().toISOString() },
+            { display: "प्रियंका सिंह, पचोखरा, M.A. हिंदी, 9876543211", name: "प्रियंका सिंह", village: "पचोखरा", education: "M.A. हिंदी", mobile: "9876543211", type: "signature", date: new Date().toISOString() },
+            { display: "अमित कुमार, लहार, B.Com. अंतिम वर्ष", name: "अमित कुमार", village: "लहार", education: "B.Com. अंतिम वर्ष", mobile: "", type: "signature", date: new Date().toISOString() }
+        ],
+        updates: [
+            { date: "06 जून 2026", text: "✨ Growing People Foundation ने ऑनलाइन अभियान की शुरुआत की" },
+            { date: "05 जून 2026", text: "💚 50+ लोगों ने हस्ताक्षर किए — हर हस्ताक्षर के साथ उम्मीद बढ़ी" },
+            { date: "04 जून 2026", text: "📜 65 ग्राम पंचायतों को ज्ञापन भेजने की तैयारी शुरू" },
+            { date: "03 जून 2026", text: "📱 सोशल मीडिया अभियान शुरू — अब हर शेयर मायने रखता है" }
+        ],
+        thoughts: "💚 हर हस्ताक्षर एक नई सुबह की उम्मीद है। आपका साथ हमारी ताकत है। लहार को पीजी कॉलेज दिलाना है — यह हम सबकी जिम्मेदारी है।"
+    };
+    
+    const ADMIN_PASSWORD = "lahar123";
+    
+    function loadData() {
+        const saved = localStorage.getItem('laharCampaignData');
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                appData = { ...appData, ...parsed };
+            } catch(e) {}
+        }
+        updateUI();
+    }
+    
+    function saveData() {
+        localStorage.setItem('laharCampaignData', JSON.stringify(appData));
+        updateUI();
+    }
+    
+    function updateUI() {
+        document.getElementById('voteCountDisplay').innerText = appData.voteCount.toLocaleString('hi-IN');
+        document.getElementById('signatureCountDisplay').innerText = appData.signatureCount.toLocaleString('hi-IN');
+        document.getElementById('liveSignatureCount').innerText = appData.signatureCount.toLocaleString('hi-IN');
+        
+        const supportersContainer = document.getElementById('supportersList');
+        if (supportersContainer) {
+            supportersContainer.innerHTML = '';
+            // सिर्फ signature टाइप वाले दिखाएँ (वोट करने वाले अलग से दिखेंगे)
+            const signaturesOnly = appData.supporters.filter(s => s.type === 'signature');
+            signaturesOnly.slice(0, 30).forEach(supporter => {
+                const div = document.createElement('div');
+                div.className = 'supporter-card';
+                div.textContent = supporter.display;
+                supportersContainer.appendChild(div);
+            });
+            if (signaturesOnly.length === 0) {
+                const div = document.createElement('div');
+                div.className = 'supporter-card';
+                div.textContent = "अभी कोई समर्थक नहीं — आप पहले बनिए!";
+                supportersContainer.appendChild(div);
+            }
+        }
+        
+        const updatesContainer = document.getElementById('updateList');
+        if (updatesContainer) {
+            updatesContainer.innerHTML = '';
+            appData.updates.forEach(update => {
+                const li = document.createElement('li');
+                li.className = 'update-item';
+                li.innerHTML = `<span class="update-date">${update.date}</span><span class="update-text">${update.text}</span>`;
+                updatesContainer.appendChild(li);
+            });
+        }
+        
+        const thoughtsContainer = document.getElementById('thoughtsContainer');
+        if (thoughtsContainer && appData.thoughts) {
+            thoughtsContainer.innerHTML = `<div style="font-size: 1rem;">💬 <strong>आज की सोच:</strong> ${appData.thoughts}</div>`;
+        }
+    }
+    
+    // ========== वोट सबमिट (अब वोट भी supporters में सेव होगा) ==========
+    function submitVote() {
+        const name = document.getElementById('voteName').value.trim();
+        const village = document.getElementById('voteVillage').value.trim();
+        const education = document.getElementById('voteEducation').value.trim();
+        
+        if (!name || !village || !education) {
+            alert("⚠️ कृपया नाम, गाँव और शिक्षा तीनों भरें!");
+            return;
+        }
+        
+        const mobile = document.getElementById('voteMobile').value.trim();
+        let displayText = `${name}, ${village}, ${education}`;
+        if (mobile) displayText += `, ${mobile}`;
+        
+        // वोट को भी supporters में सेव करें (लेकिन टाइप 'vote' के साथ)
+        appData.supporters.unshift({
+            display: displayText,
+            name: name,
+            village: village,
+            education: education,
+            mobile: mobile,
+            type: 'vote',
+            date: new Date().toISOString()
+        });
+        appData.voteCount++;
+        saveData();
+        
+        document.getElementById('voteName').value = '';
+        document.getElementById('voteVillage').value = '';
+        document.getElementById('voteEducation').value = '';
+        document.getElementById('voteMobile').value = '';
+        
+        alert(`🗳️ धन्यवाद ${name}! आपका वोट दर्ज हो गया।`);
+    }
+    
+    // ========== हस्ताक्षर सबमिट ==========
+    function submitSignature() {
+        const name = document.getElementById('signName').value.trim();
+        const village = document.getElementById('signVillage').value.trim();
+        const education = document.getElementById('signEducation').value.trim();
+        
+        if (!name || !village || !education) {
+            alert("⚠️ कृपया नाम, गाँव और शिक्षा तीनों भरें!");
+            return;
+        }
+        
+        const mobile = document.getElementById('signMobile').value.trim();
+        let displayText = `${name}, ${village}, ${education}`;
+        if (mobile) displayText += `, ${mobile}`;
+        
+        appData.supporters.unshift({
+            display: displayText,
+            name: name,
+            village: village,
+            education: education,
+            mobile: mobile,
+            type: 'signature',
+            date: new Date().toISOString()
+        });
+        appData.signatureCount++;
+        saveData();
+        
+        document.getElementById('signName').value = '';
+        document.getElementById('signVillage').value = '';
+        document.getElementById('signEducation').value = '';
+        document.getElementById('signMobile').value = '';
+        
+        alert(`✍️ धन्यवाद ${name}! आपका हस्ताक्षर जुड़ गया।`);
+    }
+    
+    // ========== एडमिन फंक्शन ==========
+    function checkAdminLogin() {
+        const pwd = document.getElementById('adminPassword').value;
+        const loginMsg = document.getElementById('loginMsg');
+        if (pwd === ADMIN_PASSWORD) {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('dashboardSection').style.display = 'block';
+            loginMsg.innerHTML = '<div class="success-msg">✅ लॉगिन सफल!</div>';
+            setTimeout(() => { loginMsg.innerHTML = ''; }, 2000);
+        } else {
+            loginMsg.innerHTML = '<div class="error-msg">❌ गलत पासवर्ड!</div>';
+        }
+    }
+    
+    function addNewUpdate() {
+        const date = document.getElementById('newUpdateDate').value;
+        const text = document.getElementById('newUpdateText').value;
+        const adminMsg = document.getElementById('adminMsg');
+        if (date && text) {
+            appData.updates.unshift({ date: date, text: text });
+            saveData();
+            document.getElementById('newUpdateDate').value = '';
+            document.getElementById('newUpdateText').value = '';
+            adminMsg.innerHTML = '<div class="success-msg">✅ नया अपडेट जोड़ा गया!</div>';
+            setTimeout(() => { adminMsg.innerHTML = ''; }, 2000);
+        } else {
+            adminMsg.innerHTML = '<div class="error-msg">⚠️ तारीख और टेक्स्ट दोनों भरें!</div>';
+        }
+    }
+    
+    function addNewSupporter() {
+        const input = document.getElementById('newSupporterName').value;
+        const adminMsg = document.getElementById('adminMsg');
+        if (input) {
+            // पुराने फॉर्मेट को सपोर्ट करें
+            const parts = input.split(',');
+            const name = parts[0]?.trim() || '';
+            const village = parts[1]?.trim() || '';
+            const education = parts[2]?.trim() || '';
+            const mobile = parts[3]?.trim() || '';
+            let displayText = `${name}, ${village}, ${education}`;
+            if (mobile) displayText += `, ${mobile}`;
+            
+            appData.supporters.unshift({
+                display: displayText,
+                name: name,
+                village: village,
+                education: education,
+                mobile: mobile,
+                type: 'signature',
+                date: new Date().toISOString()
+            });
+            appData.signatureCount++;
+            saveData();
+            document.getElementById('newSupporterName').value = '';
+            adminMsg.innerHTML = '<div class="success-msg">✅ नया समर्थक जोड़ा गया!</div>';
+            setTimeout(() => { adminMsg.innerHTML = ''; }, 2000);
+        }
+    }
+    
+    function updateCounters() {
+        const vote = document.getElementById('newVoteCount').value;
+        const sig = document.getElementById('newSignatureCount').value;
+        const adminMsg = document.getElementById('adminMsg');
+        if (vote) appData.voteCount = parseInt(vote);
+        if (sig) appData.signatureCount = parseInt(sig);
+        saveData();
+        document.getElementById('newVoteCount').value = '';
+        document.getElementById('newSignatureCount').value = '';
+        adminMsg.innerHTML = '<div class="success-msg">✅ काउंटर अपडेट हो गए!</div>';
+        setTimeout(() => { adminMsg.innerHTML = ''; }, 2000);
+    }
+    
+    function addNewThought() {
+        const thought = document.getElementById('newThought').value;
+        const adminMsg = document.getElementById('adminMsg');
+        if (thought) {
+            appData.thoughts = thought;
+            saveData();
+            document.getElementById('newThought').value = '';
+            adminMsg.innerHTML = '<div class="success-msg">✅ नई सोच पोस्ट हो गई!</div>';
+            setTimeout(() => { adminMsg.innerHTML = ''; }, 2000);
+        }
+    }
+    
+    function closeAdminModal() {
+        document.getElementById('adminModal').classList.remove('active');
+        document.getElementById('loginSection').style.display = 'block';
+        document.getElementById('dashboardSection').style.display = 'none';
+        document.getElementById('adminPassword').value = '';
+        document.getElementById('loginMsg').innerHTML = '';
+        document.getElementById('adminMsg').innerHTML = '';
+    }
+    
+    document.getElementById('adminToggleBtn').addEventListener('click', () => {
+        document.getElementById('adminModal').classList.add('active');
+    });
+    
+    // Share Buttons
+    const currentUrl = encodeURIComponent(window.location.href);
+    const shareText = encodeURIComponent("💚 लहार में PG कॉलेज नहीं है। 65 गाँव, 35000+ लोग बिना पीजी शिक्षा के। कृपया इस अभियान से जुड़ें और मदद करें। 🙏");
+    document.getElementById('whatsappShareBtn').href = `https://wa.me/?text=${shareText}%20${currentUrl}`;
+    document.getElementById('facebookShareBtn').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+    
+    // Follow Links - अपने लिंक यहाँ लगाएँ
+    document.getElementById('whatsappFollowBtn').href = "https://whatsapp.com/channel/xxxxxxxx";
+    document.getElementById('facebookFollowBtn').href = "https://facebook.com/xxxxxxxx";
+    document.getElementById('instagramFollowBtn').href = "https://instagram.com/xxxxxxxx";
+    
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    loadData();
+</script>
+
+</body>
+</html>
