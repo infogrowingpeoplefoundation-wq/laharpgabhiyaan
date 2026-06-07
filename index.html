@@ -470,7 +470,7 @@
 
 <script>
     // ========== 🔴 IMPORTANT: अपना Google Script URL यहाँ डालें 🔴 ==========
-    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec";
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec";
     // =====================================================================
     
     // Toast notification function
@@ -485,7 +485,7 @@
     
     // Google Sheet में डाटा भेजने का function
     async function submitToGoogleSheet(data) {
-        if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec") {
+        if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
             console.log("Google Sheet URL not configured. Saving to localStorage only.");
             return false;
         }
@@ -612,7 +612,7 @@
         
         if (sheetSuccess) {
             showToast("✅ Google Sheet में सेव हो गया!");
-        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec") {
+        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
             showToast("⚠️ Google Sheet सेव नहीं हुआ, लेकिन डाटा Local में सेव है", true);
         }
         
@@ -655,7 +655,7 @@
         
         if (sheetSuccess) {
             showToast("✅ Google Sheet में हस्ताक्षर सेव हो गया!");
-        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec") {
+        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
             showToast("⚠️ Google Sheet सेव नहीं हुआ, लेकिन डाटा Local में सेव है", true);
         }
         
@@ -790,7 +790,7 @@
     loadData();
     
     // Config check console message
-    if (GOOGLE_SHEET_URL === "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec") {
+    if (GOOGLE_SHEET_URL === "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
         console.log("⚠️ Please set your GOOGLE_SHEET_URL in the script to enable Google Sheets integration");
     } else {
         console.log("✅ Google Sheets integration is active");
