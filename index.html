@@ -464,7 +464,7 @@
 
 <footer class="footer">
     <p>🌱 Growing People Foundation — हम बदलाव पर विश्वास करते हैं, और आप उस बदलाव की शुरुआत हैं।</p>
-    <p style="margin-top: 0.5rem;">📧 प्रदेशाध्यक्ष श्री गोविन्द कुमार आर्य | 📞 संपर्क: 78795 42495</p>
+    <p style="margin-top: 0.5rem;"> प्रदेशाध्यक्ष श्री गोविन्द कुमार आर्य | 📞 78795 42495</p>
     <p style="margin-top: 0.5rem; font-size: 0.7rem;">यह एक जन अभियान है। हम किसी के खिलाफ नहीं, हम सबके साथ हैं।</p>
 </footer>
 
@@ -612,7 +612,7 @@
         
         if (sheetSuccess) {
             showToast("✅ Google Sheet में सेव हो गया!");
-        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "YOUR_GOOGLE_SCRIPT_URL_HERE") {
+        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec") {
             showToast("⚠️ Google Sheet सेव नहीं हुआ, लेकिन डाटा Local में सेव है", true);
         }
         
@@ -655,7 +655,7 @@
         
         if (sheetSuccess) {
             showToast("✅ Google Sheet में हस्ताक्षर सेव हो गया!");
-        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "YOUR_GOOGLE_SCRIPT_URL_HERE") {
+        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec") {
             showToast("⚠️ Google Sheet सेव नहीं हुआ, लेकिन डाटा Local में सेव है", true);
         }
         
@@ -790,7 +790,7 @@
     loadData();
     
     // Config check console message
-    if (GOOGLE_SHEET_URL === "YOUR_GOOGLE_SCRIPT_URL_HERE") {
+    if (GOOGLE_SHEET_URL === "https://script.google.com/macros/s/AKfycbznr81PzrVZlHeLXPBVENthsLQ2aMfdtg9G7a7QJ7g7yUDb71XKJMw3XVyUCxN3wa0dzQ/exec") {
         console.log("⚠️ Please set your GOOGLE_SHEET_URL in the script to enable Google Sheets integration");
     } else {
         console.log("✅ Google Sheets integration is active");
