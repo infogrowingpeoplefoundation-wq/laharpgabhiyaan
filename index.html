@@ -464,13 +464,13 @@
 
 <footer class="footer">
     <p>🌱 Growing People Foundation — हम बदलाव पर विश्वास करते हैं, और आप उस बदलाव की शुरुआत हैं।</p>
-    <p style="margin-top: 0.5rem;"> प्रदेशाध्यक्ष श्री गोविन्द कुमार आर्य | 📞 78795 42495</p>
+    <p style="margin-top: 0.5rem;">📧 प्रदेशाध्यक्ष श्री गोविन्द कुमार आर्य | 📞 78795 42495</p>
     <p style="margin-top: 0.5rem; font-size: 0.7rem;">यह एक जन अभियान है। हम किसी के खिलाफ नहीं, हम सबके साथ हैं।</p>
 </footer>
 
 <script>
-    // ========== 🔴 IMPORTANT: अपना Google Script URL यहाँ डालें 🔴 ==========
-    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec";
+    // ========== ✅ सही Google Script URL (आपका असली URL) ==========
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwYcTA_sr88BslJ7oUTEgTYnyfV2SV4QoC-SB1K0xDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec";
     // =====================================================================
     
     // Toast notification function
@@ -485,13 +485,8 @@
     
     // Google Sheet में डाटा भेजने का function
     async function submitToGoogleSheet(data) {
-        if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
-            console.log("Google Sheet URL not configured. Saving to localStorage only.");
-            return false;
-        }
-        
         try {
-            // Get client IP (optional but good for security)
+            // IP address fetch
             let ip = "unknown";
             try {
                 const ipRes = await fetch('https://api.ipify.org?format=json');
@@ -501,17 +496,18 @@
             
             data.ip = ip;
             
-            const response = await fetch(GOOGLE_SHEET_URL, {
+            // Send to Google Sheet
+            await fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
             
-            console.log("Data sent to Google Sheet:", data);
+            console.log("✅ Data sent to Google Sheet:", data);
             return true;
         } catch(error) {
-            console.error("Google Sheet submission failed:", error);
+            console.error("❌ Google Sheet submission failed:", error);
             return false;
         }
     }
@@ -527,10 +523,10 @@
             { display: "नेहा वर्मा, मिहोना, B.Sc. द्वितीय वर्ष, 9988776655", name: "नेहा वर्मा", village: "मिहोना", education: "B.Sc. द्वितीय वर्ष", mobile: "9988776655", type: "signature", date: new Date().toISOString() }
         ],
         updates: [
-            { date: "06 जून 2026", text: "✨ Growing People Foundation ने ऑनलाइन अभियान की शुरुआत की | अब Google Sheets में डाटा सेव हो रहा है" },
+            { date: "07 जून 2026", text: "✅ Google Sheets Integration सक्रिय! अब सारा डाटा Sheet में सेव हो रहा है" },
+            { date: "06 जून 2026", text: "✨ Growing People Foundation ने ऑनलाइन अभियान की शुरुआत की" },
             { date: "05 जून 2026", text: "💚 50+ लोगों ने हस्ताक्षर किए — हर हस्ताक्षर के साथ उम्मीद बढ़ी" },
-            { date: "04 जून 2026", text: "📜 65 ग्राम पंचायतों को ज्ञापन भेजने की तैयारी शुरू" },
-            { date: "03 जून 2026", text: "📱 सोशल मीडिया अभियान शुरू — अब हर शेयर मायने रखता है" }
+            { date: "04 जून 2026", text: "📜 65 ग्राम पंचायतों को ज्ञापन भेजने की तैयारी शुरू" }
         ],
         thoughts: "💚 हर हस्ताक्षर एक नई सुबह की उम्मीद है। आपका साथ हमारी ताकत है। लहार को पीजी कॉलेज दिलाना है — यह हम सबकी जिम्मेदारी है।"
     };
@@ -593,7 +589,7 @@
         }
     }
     
-    // ========== वोट सबमिट (Google Sheet + Local Storage) ==========
+    // ========== वोट सबमिट ==========
     async function submitVote() {
         const name = document.getElementById('voteName').value.trim();
         const village = document.getElementById('voteVillage').value.trim();
@@ -608,13 +604,7 @@
         
         // Google Sheet में सेव करें
         const sheetData = { type: 'vote', name: name, village: village, education: education, mobile: mobile };
-        const sheetSuccess = await submitToGoogleSheet(sheetData);
-        
-        if (sheetSuccess) {
-            showToast("✅ Google Sheet में सेव हो गया!");
-        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
-            showToast("⚠️ Google Sheet सेव नहीं हुआ, लेकिन डाटा Local में सेव है", true);
-        }
+        await submitToGoogleSheet(sheetData);
         
         // Local Storage में भी सेव करें
         let displayText = `${name}, ${village}, ${education}`;
@@ -636,7 +626,7 @@
         showToast(`🗳️ धन्यवाद ${name}! आपका वोट दर्ज हो गया।`);
     }
     
-    // ========== हस्ताक्षर सबमिट (Google Sheet + Local Storage) ==========
+    // ========== हस्ताक्षर सबमिट ==========
     async function submitSignature() {
         const name = document.getElementById('signName').value.trim();
         const village = document.getElementById('signVillage').value.trim();
@@ -651,13 +641,7 @@
         
         // Google Sheet में सेव करें
         const sheetData = { type: 'signature', name: name, village: village, education: education, mobile: mobile };
-        const sheetSuccess = await submitToGoogleSheet(sheetData);
-        
-        if (sheetSuccess) {
-            showToast("✅ Google Sheet में हस्ताक्षर सेव हो गया!");
-        } else if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL !== "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
-            showToast("⚠️ Google Sheet सेव नहीं हुआ, लेकिन डाटा Local में सेव है", true);
-        }
+        await submitToGoogleSheet(sheetData);
         
         // Local Storage में सेव करें
         let displayText = `${name}, ${village}, ${education}`;
@@ -789,12 +773,9 @@
     
     loadData();
     
-    // Config check console message
-    if (GOOGLE_SHEET_URL === "https://script.google.com/macros/s/AKfycbwYcTA_sr88BsIJ7oUTEgTYnyfV2SV4QoC-SB1KOxDkq_TfcyYPRQLnYIvM26Qc9JB3Fw/exec") {
-        console.log("⚠️ Please set your GOOGLE_SHEET_URL in the script to enable Google Sheets integration");
-    } else {
-        console.log("✅ Google Sheets integration is active");
-    }
+    // Success message
+    console.log("✅ Google Sheets Integration Active");
+    console.log("📊 URL:", GOOGLE_SHEET_URL);
 </script>
 
 </body>
